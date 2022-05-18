@@ -35,12 +35,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       delete User.hash;
 
       const secret = "test";
+      const token = jwt.sign({
+        username
+      }, secret);
 
-      return res.send({
-        token: jwt.sign({
-          username
-        }, secret)
-      });
+      res.setHeader("set-cookie", `auth-token=${token}; path=/; samesite=lax;`);
+
+      return {
+        message: "Success"
+      }
 
     } catch(error) {
       return res.send(error);

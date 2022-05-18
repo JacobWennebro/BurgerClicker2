@@ -9,6 +9,7 @@ Skapa ett nytt klicker spel baserat på 2021s succé Burger Clicker, skapat av J
 * [v16] Började spana på olika teknologier och vad som kan användas för projektet.
 * [v17] Fixade Next.js & Prisma som bas för mitt spel
 * [v18] Börjar med att skapa logik för konton, login, signup etc.
+* [v19] Skapa grafik för spelet
 
 # Planering
 Saker att skapa och lägga till

@@ -2,7 +2,7 @@ export default class LocalStorage {
     private data: any;
     private driverName: string;
 
-    constructor(driverName: string) {
+    constructor(driverName: string) {   
         this.driverName = driverName;
         this.data = JSON.parse(localStorage.getItem(`bc2-${driverName}`) || "{}");
     }
