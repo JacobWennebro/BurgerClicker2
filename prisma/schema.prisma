@@ -3,11 +3,11 @@ generator client {
 }
 
 datasource db {
-  provider = "postgres"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model User {
+model jabweo_User {
   id           String   @unique @default(uuid())
   hash         String
   prestige     Int      @default(0)
@@ -19,4 +19,302 @@ model User {
   items        Json     @default("[]")
   created_at   DateTime @default(now()) @db.Timestamp(0)
   updated_at   DateTime @default(now()) @db.Timestamp(0)
+}
+
+model CosmiskaRobotar_login {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  user       String   @unique(map: "user") @db.VarChar(20)
+  password   String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model admlat_login {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  user       String   @unique(map: "user") @db.VarChar(20)
+  password   String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model admlat_posts {
+  id          BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  created_at  DateTime @default(now()) @db.Timestamp(0)
+  full_text   String   @db.Text
+  description String   @db.VarChar(255)
+  uid         Int
+  heading     String   @db.VarChar(80)
+}
+
+model admlat_tasks {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  task       String   @db.VarChar(255)
+  completed  Boolean  @default(false)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model eltthn_meeps {
+  id BigInt @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+}
+
+model emlabg_meeps {
+  id         Int      @unique(map: "id") @default(autoincrement())
+  body       String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.DateTime(0)
+  desc       String?  @db.VarChar(16000)
+  img        String?  @db.Text
+  cardimg    String?  @db.Text
+}
+
+model emlabg_top {
+  id    BigInt  @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  title String? @db.VarChar(255)
+}
+
+model emlasr_meeps {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  body       String?  @db.VarChar(140)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  user_id    Int?     @db.UnsignedInt
+}
+
+model emlasr_users {
+  id       Int     @id @default(autoincrement()) @db.UnsignedInt
+  name     String? @db.VarChar(140)
+  password String? @db.VarChar(255)
+}
+
+model fipann_meeps {
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  body       String?   @db.VarChar(140)
+  updated_at DateTime? @default(now()) @db.Timestamp(0)
+  user_id    Int       @default(0) @db.UnsignedInt
+}
+
+model fipann_users {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  name       String   @db.VarChar(255)
+  password   String   @default("NULL") @db.VarChar(255)
+  last_login DateTime @default(now()) @db.Timestamp(0)
+}
+
+model fipann_videos {
+  id          Int      @id @unique(map: "id") @default(autoincrement()) @db.UnsignedInt
+  title       String   @default("NULL") @db.VarChar(100)
+  description String   @default("NULL") @db.VarChar(255)
+  updated_at  DateTime @default(now()) @db.Timestamp(0)
+  path        String   @default("NULL") @db.VarChar(255)
+}
+
+model iscdan_meeps {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  body       String?  @db.VarChar(255)
+}
+
+model iscdan_noots {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  body       String?  @db.VarChar(255)
+  user_id    BigInt?  @db.UnsignedBigInt
+}
+
+model iscdan_users {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  last_login DateTime @default(now()) @db.Timestamp(0)
+  password   String?  @db.VarChar(255)
+  name       String?  @db.VarChar(255)
+}
+
+model iskthl_login {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  username   String   @db.VarChar(25)
+  password   String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model iskthl_meeps {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  body       String   @db.VarChar(140)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model jabweo_bc2 {
+  id BigInt @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+}
+
+model jabweo_meeps {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  color      String?  @default("NULL") @db.Char(6)
+  body       String   @db.VarChar(140)
+}
+
+model jesann_users {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  name       String   @db.VarChar(100)
+  password   String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([name], map: "name")
+}
+
+model jolabn_login {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  username   String   @unique(map: "username") @db.VarChar(16)
+  password   String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  admin      Int      @default(0) @db.TinyInt
+}
+
+model jolabn_meeps {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  body       String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  user_id    BigInt   @default(0) @db.UnsignedBigInt
+}
+
+model jolabn_scores {
+  id                        BigInt @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  coinflip_highscore        Int    @default(0)
+  higher_or_lower_highscore Int    @default(0)
+  user_id                   BigInt
+}
+
+model jolabn_tasks {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  task       String   @db.VarChar(255)
+  completed  Int      @default(0) @db.TinyInt
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  user_id    BigInt   @default(0) @db.UnsignedBigInt
+}
+
+model leoseg_meeps {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+  created_at DateTime @default(dbgenerated("('0000-00-00 00:00:00')")) @db.Timestamp(0)
+  body       String   @db.VarChar(255)
+}
+
+model leoseg_songs {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  password   String   @db.VarChar(255)
+  name       String   @db.VarChar(255)
+  user       String   @db.VarChar(255)
+  last_login DateTime @default(now()) @db.Timestamp(0)
+}
+
+model limmuy_connection {
+  id       BigInt @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  user_id  Int
+  manga_id Int
+  chapter  String @db.VarChar(255)
+  status   String @db.VarChar(255)
+}
+
+model limmuy_manga {
+  id    BigInt @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  title String @db.VarChar(255)
+}
+
+model limmuy_meeps {
+  id      Int      @id @default(autoincrement())
+  body    String   @db.VarChar(140)
+  created DateTime @default(now()) @db.Timestamp(0)
+  edited  DateTime @default(now()) @db.Timestamp(0)
+}
+
+model limmuy_users {
+  id       BigInt @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  username String @db.VarChar(255)
+  password String @db.VarChar(255)
+}
+
+model marnyd_meeps {
+  id          Int      @id @default(autoincrement()) @db.UnsignedInt
+  body        String   @db.VarChar(140)
+  created_at  DateTime @default(now()) @db.Timestamp(0)
+  updated_at  DateTime @default(now()) @db.Timestamp(0)
+  description String   @db.VarChar(140)
+}
+
+model masnyd_artists {
+  id   Int      @id @default(autoincrement()) @db.UnsignedInt
+  name String   @unique(map: "name") @db.VarChar(140)
+  date DateTime @db.Date
+}
+
+model masnyd_ratings {
+  id      Int @id @default(autoincrement()) @db.UnsignedInt
+  user_id Int
+  rating  Int
+}
+
+model masnyd_songs {
+  id         Int     @id @default(autoincrement()) @db.UnsignedInt
+  song_name  String  @db.VarChar(140)
+  song_album String? @db.VarChar(100)
+  genres     String
+  artists    String  @db.LongText
+  song_link  String  @db.VarChar(255)
+}
+
+model masnyd_users {
+  id       Int    @id @default(autoincrement()) @db.UnsignedInt
+  name     String @unique(map: "name") @db.VarChar(40)
+  password String @db.VarChar(255)
+}
+
+model minlun_tasks {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  task       String   @db.VarChar(255)
+  completed  Int      @db.TinyInt
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model olrlut_meeps {
+  id        Int      @id @default(autoincrement())
+  body      String   @db.VarChar(140)
+  updatedAt DateTime @default(now()) @db.Timestamp(0)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  title     String?  @db.VarChar(40)
+}
+
+model rasobg_meeps {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  body       String?  @db.VarChar(140)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+  user_id    Int?
+}
+
+model rasobg_users {
+  user_id    Int      @unique(map: "id") @default(autoincrement()) @db.UnsignedInt
+  username   String   @db.VarChar(20)
+  password   String   @db.VarChar(500)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  imgpath    String?  @db.VarChar(1024)
+}
+
+model sessions {
+  session_id String  @id @db.VarChar(128)
+  expires    Int     @db.UnsignedInt
+  data       String? @db.MediumText
+}
+
+model timlum_meeps {
+  id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  body       String   @db.VarChar(140)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model timlum_tasks {
+  id         BigInt   @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  task       String   @default("NULL") @db.VarChar(240)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
 }

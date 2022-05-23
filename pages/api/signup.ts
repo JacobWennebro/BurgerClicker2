@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
 
-      const User = await prisma.user.create({
+      const User = await prisma.jabweo_User.create({
         data: {
           username,
           email,    
