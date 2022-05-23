@@ -13,7 +13,7 @@ export default function Layout(props: PropsWithChildren<{username: String}>) {
         <div className="account">
           <div className="account-box">
             <img src={`https://avatars.dicebear.com/api/big-ears-neutral/${props.username}.svg`}/>
-            <p>Playing as "{props.username}"</p>
+            <p>Playing as &quot;{props.username}&quot;</p>
           </div>
         </div>
 
