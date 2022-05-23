@@ -3,7 +3,7 @@ import * as cookie from 'cookie'
 import jwt from "jsonwebtoken";
 import Layout from '../components/game/Layout';
 
-export default function index(props: { username: string }) {
+export default function Index(props: { username: string }) {
   return (
     <Layout username={props.username}>
       <h1>Hello World</h1>

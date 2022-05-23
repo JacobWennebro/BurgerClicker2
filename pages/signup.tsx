@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState } from "react";
 import Router from 'next/router'
 import LocalStorage from "../scripts/LocalStorage";
 
-export default function signup() {
+export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
