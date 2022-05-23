@@ -1,0 +1,223 @@
+.layout {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 25rem auto 25rem;
+
+    .sidebar {
+        background-color: $red;
+        color: $yellow;
+        text-align: center;
+        display: grid;
+        grid-template-rows: 6rem 5rem auto 4rem;
+        grid-row-gap: 0.5rem;
+
+        .account {
+            font-family: 'Lilita One', cursive;
+            text-align: left;
+            &-box {
+                background-color: rgba(0,0,0,0.2);
+                height: 100%;
+                width: 80%;
+                margin: auto;
+                padding: 0.5rem;
+                border-radius: 4px;
+                position: relative;
+                p {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    display: inline-block;
+                }
+                img {
+                    height: 100%;
+                    border-radius: 33vw;
+                    margin-right: 1rem;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        h1#title {
+            font-family: 'Lilita One', cursive;
+            font-size: 2.8rem;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .receipt {
+            font-family: 'VT323', monospace;
+            color: #222;
+            background-color: #FFF;
+            border-radius: 4px;
+            width: 80%;
+            height: 100%;
+            margin: auto;
+            min-height: 40vh;
+            padding: 0.5rem;
+            position: relative;
+
+            #totalPrice {
+                text-align: left;
+                margin-left: 2rem;
+                margin-top: 4rem;
+                bottom: 0;
+            }
+
+            &__spacer {
+                margin: 0.5rem 0;
+                font-weight: bold;
+            }
+
+            h1 {
+                margin-top: 1rem;
+            }
+
+            h3 {
+                font-weight: 100;
+            }
+
+            #barcode {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                margin-bottom: 2rem;
+                font-size: 2rem;
+                font-family: 'Libre Barcode 39 Extended Text', cursive;
+            }
+
+            &__prices {
+                margin: 1rem 0;
+                ul {
+                    width: 100%;
+                    display: table;
+                    table-layout: fixed;
+                    border-collapse: collapse;
+    
+                    li {
+                        display: table-cell;
+                        text-align: center;
+                        vertical-align: middle;
+                        word-wrap: break-word;
+                    }
+                }
+            }
+
+        }
+
+        .bank {
+            font-family: 'Lilita One', cursive;
+            background-color: rgba(0,0,0,0.2);
+            p {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .content {
+        background-color: $yellow;
+        position: relative;
+        overflow: hidden;
+
+        .burger {
+            position: absolute;
+            transform: translateY(-50%);
+            top: 50%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transition: transform 0.1s linear;
+            cursor: pointer;
+
+        }
+
+        .level-bar {
+            position: absolute;
+            height: 4rem;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.2);
+            font-family: 'Lilita One', cursive;
+            z-index: 100;
+
+            &__progress {
+                width: 0%;
+                height: 100%;
+                background-color: green;
+                transition: width 0.2s linear;
+                span {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: #FFF;
+                    margin-left: 2rem;
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+
+    .upgrades {
+        font-family: 'Lilita One', cursive;
+        background-color: $red;
+        color: $yellow;
+        padding: 2rem;
+
+        &__container .upgrade {
+            background-color: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            transition: background-color 0.3s ease;
+            display: grid;
+            grid-template-columns: auto 20%;
+            
+            div {
+                position: relative;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(0,0,0,0.3);
+            }
+
+            h2 {
+                font-weight: 100;
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                color: #FFF;
+            }
+
+            span {
+                display: block;
+                font-size: 2.3rem;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-device-width : 1200px) {
+
+    .layout {
+        grid-template-columns: 100%;
+
+        .content {
+            height: 100vh;
+        }
+    }
+
+}

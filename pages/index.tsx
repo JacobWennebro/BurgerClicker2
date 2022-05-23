@@ -1,21 +1,35 @@
 import { GetServerSideProps, NextPageContext } from 'next'
-import axios from 'axios'
 import * as cookie from 'cookie'
+import jwt from "jsonwebtoken";
+import Layout from '../components/game/Layout';
 
-export default function index(props: any) {
-
+export default function index(props: { username: string }) {
   return (
-    <div>Hello</div>
+    <Layout username={props.username}>
+      <h1>Hello World</h1>
+    </Layout>
   )
-
 }
 
 export function getServerSideProps(ctx: NextPageContext) {
   if(ctx.req) {
     const cookies = cookie.parse(ctx.req.headers.cookie || "");
+    const token = cookies["auth-token"] || null;
+
+    if(!token) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: `/signup`
+        },
+      };
+    }
+
+    const decoded: any = jwt.verify(token, "test");
+
     return {
       props: {
-        token: cookies["auth-token"] || null
+        ...decoded
       }
     };
   } else return null;

@@ -1,0 +1,42 @@
+@import "./variables.scss";
+@import "./components/burger.scss";
+@import "./components/layout.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&family=Lilita+One&family=VT323&display=swap");
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: inherit;
+    margin: 0;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+.temp-click-text {
+    pointer-events: none;
+    font-size: 1.2rem;
+    font-family: "Lilita One", cursive;
+    color: white;
+    animation: test 2s forwards linear;
+}
+
+.nobold {
+    font-weight: 100;
+}
+
+@keyframes test {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

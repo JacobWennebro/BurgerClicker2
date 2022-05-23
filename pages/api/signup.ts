@@ -41,11 +41,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       res.setHeader("set-cookie", `auth-token=${token}; path=/; samesite=lax;`);
 
-      return {
+      return res.send({
         message: "Success"
-      }
+      });
 
     } catch(error) {
+      console.log(error);
       return res.send(error);
     }
 
