@@ -28,6 +28,14 @@
                     top: 50%;
                     transform: translateY(-50%);
                     display: inline-block;
+                    span {
+                        font-size: 0.8rem;
+                        color: white;
+                        &:hover {
+                            text-decoration: underline;
+                            cursor: pointer;
+                        }
+                    }
                 }
                 img {
                     height: 100%;

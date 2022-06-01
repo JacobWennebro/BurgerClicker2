@@ -1,20 +1,24 @@
-import React, { Component, createRef, MouseEvent, RefObject } from 'react'
+import React, { Component } from "react";
 
-export default class Burger extends Component {
+interface Props {
+    onClick: () => void;
+}
 
-    render() {
-        return (
-            <div className="burger">
-                <div className="burger__bun top burger-item"></div>
+export default function Burger(props: Props) {
+    
+    
 
-                <div className={`burger__patty burger-item`}></div>                
+    return (
+        <div onClick={props.onClick} className="burger">
+            <div className="burger__bun top burger-item"></div>
 
-                {/* Defaults */}
-                <div className="burger__cheese burger-item"></div>
-                <div className="burger__patty burger-item"></div>
+            <div className={`burger__patty burger-item`}></div>
 
-                <div className="burger__bun bottom burger-item"></div>
-            </div>
-        )
-    }
+            {/* Defaults */}
+            <div className="burger__cheese burger-item"></div>
+            <div className="burger__patty burger-item"></div>
+
+            <div className="burger__bun bottom burger-item"></div>
+        </div>
+    );
 }

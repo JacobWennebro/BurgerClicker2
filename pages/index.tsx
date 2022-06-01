@@ -16,7 +16,7 @@ export function getServerSideProps(ctx: NextPageContext) {
     const cookies = cookie.parse(ctx.req.headers.cookie || "");
     const token = cookies["auth-token"] || null;
 
-    if(!token) {
+    if(!token || token === "deleted") {
       return {
         redirect: {
           permanent: false,

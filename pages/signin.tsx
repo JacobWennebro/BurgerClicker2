@@ -8,16 +8,15 @@ export default function Signup() {
   const [cpassword, setCPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const submitSignupForm = async (e: SyntheticEvent) => {
+  const submitSigninForm = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    const req = await fetch("/api/signup", {
+    const req = await fetch("/api/signin", {
       method: "POST",
       headers: { "Content-Type":"application/json" },
       body: JSON.stringify({
-        username,
         password,
-        email,
+        email
       }),
     });
 
@@ -25,25 +24,22 @@ export default function Signup() {
     if(res.message === "Success") {
       location.replace("/");
     }
-    
+
   };
 
   return (
     <div>
-      <form onSubmit={submitSignupForm}>
+      <form onSubmit={submitSigninForm}>
         <fieldset>
-          <legend>Sign up</legend>
-          <input type="text" placeholder="Username" name="username" onChange={e => setUsername(e.target.value)}/>
-          <br/>
+          <legend>Sign in</legend>
           <input type="email" placeholder="Email" name="email" onChange={e => setEmail(e.target.value)}/>
           
           <input type="password" placeholder="Password" name="password" onChange={e => setPassword(e.target.value)}/>
-          <input type="password" placeholder="Confirm Password" name="cpassword" onChange={e => setCPassword(e.target.value)}/>
           <br/>
           <br/>
-          <input type="submit" value="Register"/>
+          <input type="submit" value="Signin"/>
           <br/>
-          <span>Already have an account? <a href="/signin">Sign in here.</a></span>
+          <span>Don't already have an account? <a href="/signin">Sign up here.</a></span>
         </fieldset>
       </form>
     </div>
