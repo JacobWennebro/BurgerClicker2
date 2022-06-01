@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import Router from 'next/router'
 import LocalStorage from "../scripts/LocalStorage";
+import Link from "next/link";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -39,7 +40,7 @@ export default function Signup() {
           <br/>
           <input type="submit" value="Signin"/>
           <br/>
-          <span>Don't already have an account? <a href="/signin">Sign up here.</a></span>
+          <span>Don&apos;t already have an account? <Link href="/signin">Sign up here.</Link></span>
         </fieldset>
       </form>
     </div>
