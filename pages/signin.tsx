@@ -40,7 +40,7 @@ export default function Signup() {
           <br/>
           <input type="submit" value="Signin"/>
           <br/>
-          <span>Don&apos;t already have an account? <Link href="/signin">Sign up here.</Link></span>
+          <span>Don&apos;t already have an account? <Link href="/signup">Sign up here.</Link></span>
         </fieldset>
       </form>
     </div>
