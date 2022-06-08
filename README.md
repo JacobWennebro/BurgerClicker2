@@ -51,9 +51,20 @@ Jag började projektet med att skapa en koppling till databasen med hjälp utav 
 Sedan klonade jag mitt gamla repository och började implementera spelets gamla layout som bara renderades utav servern ifall användaren är inloggad. Sedan började jag ändra och uppdatera den gamla layouten för en nyare look. Jag skapade även nya sprites för spelets burgare.
 
 ## Tester
+### W3C CSS Validering
 Spelets layout CSS har testats med W3C's CSS valideringstjänst Jigsaw och märkte inte av några problem förutom två deprecated CSS media regler. Något som följt med spelets gamla code base och kan visserligen uppdateras för att vara mer up-to-date, dock pågrund utav tidsbrist förblir dessa media regler i spelets kod för tillfället.
-
+### W3 NU Html Checker
 Spelets HTML markup testades även med W3's Nu Html Checker och fann inga fel i sidans syntax.
+### WAVE
+Eftersom som sidan är låst bakom inlogg användes Wave till att skanna Burger Clicker 1 istället då deras layout, samt färgschema är i stort sätt det samma. Wave fann inga errors för projektet men hade dock en del alerts om inkonsekventa heading element från störst till minst, även att aria attributer saknas. Dock något som jag anser vara onödigt då sidan är ett spel och inte en informativ webbplats.
+
+![a](https://i.imgur.com/mFQEzxF.png)
+
+### A11Y - Color blindness empathy test
+Med hjälp utav Chrome extensionen A11Y color blindess empathy test så var det dock enklare att testa den nuvarande sidan. Medan detta test inte automatiskt ger ett svar om sidan har bra eller dålig synlighet så är det klart för mig då jag testade alla olika typer av färgblindhet att sidans största brist är dålig kontrast mellan spelets nya ost element och den gula bakgrunden. Något som inte försekom i den tidigare versionen utav spelet.
+
+### Bilder
+Spelet använder sig utav ett fåtal bilder för att till exempel användas som sprites till diverse uppgraderingar i spelet. Dessa bilder är dock alla gjorda i litet pixel art format och håller sig alla under en kB. Spelarens profilbild är dock i SVG format och är 1.8 kB stor. Laddningstiden för dessa bilder är alltså minimal.
 
 ## Positiva erfarenheter
 Jag har fått en bättre förståelse för både databas ORMn Prisma samt Vercels React-baserade ramverket Next.js och deras hosting plattform vilket har känts som en mycket effektiv stack att jobba i.
